@@ -1,5 +1,3 @@
-// @ts-check
-
 // ***********************************************
 // All of these tests are written to implement
 // the official TodoMVC tests written for Selenium.

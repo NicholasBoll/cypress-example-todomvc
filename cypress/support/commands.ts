@@ -11,6 +11,13 @@
 // https://on.cypress.io/commands
 // ***********************************************
 
+declare namespace Cypress {
+  interface Chainable {
+    createDefaultTodos(): Cypress.Chainable
+    createTodo(todo: string): Cypress.Chainable
+  }
+}
+
 Cypress.Commands.add('createDefaultTodos', function () {
 
   let TODO_ITEM_ONE = 'buy some cheese'
@@ -20,7 +27,7 @@ Cypress.Commands.add('createDefaultTodos', function () {
   // begin the command here, which by will display
   // as a 'spinning blue state' in the UI to indicate
   // the command is running
-  let cmd = Cypress.log({
+  let cmd: any = Cypress.log({
     name: 'create default todos',
     message: [],
     consoleProps () {
@@ -56,7 +63,7 @@ Cypress.Commands.add('createDefaultTodos', function () {
 
 Cypress.Commands.add('createTodo', function (todo) {
 
-  let cmd = Cypress.log({
+  let cmd: any = Cypress.log({
     name: 'create todo',
     message: todo,
     consoleProps () {
