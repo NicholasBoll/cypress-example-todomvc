@@ -2,7 +2,7 @@
 export const createTodo = (name: string) => {
   cy.get('.new-todo').type(`${name}{enter}`)
 
-  return cy.get('.todo-list li').eq(0)
+  return cy.get('.todo-list').contains('li', name.trim())
 }
 
 export const updateTodo = (name: string) => ($todo: JQuery) => {
