@@ -21,3 +21,9 @@
 // Alternatively you can use CommonJS syntax:
 require('./commands')
 require('./defaults')
+
+before(() => {
+  console.log('before')
+
+  cy.log('before')
+})

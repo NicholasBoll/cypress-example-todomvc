@@ -2,29 +2,26 @@ import {
   createTodo,
   markAsDone,
   updateTodo,
-  getTodoName,
   deleteTodo,
-} from '../helpers/todo'
+} from '../helpers/todo_log'
 
 describe('TodoMVC - React', function () {
 
   beforeEach(function () {
-    cy.visit('/')
+    cy.visit('/#/')
   })
 
   context('Item', function () {
 
     it('should add new todo', () => {
       createTodo('Learn Cypress Command API')
-        .then(getTodoName)
-        .should('equal', 'Learn Cypress Command API')
+        .should('contain', 'Learn Cypress Command API')
     })
 
     it('should update a todo', () => {
       createTodo('Learn Cypress Command API')
         .then(updateTodo('Learn Cypress composition'))
-        .then(getTodoName)
-        .should('equal', 'Learn Cypress composition')
+        .should('contain', 'Learn Cypress composition')
     })
 
     it('should allow marking a todo as done', () => {
@@ -38,7 +35,7 @@ describe('TodoMVC - React', function () {
         .then(deleteTodo)
 
       cy.get('.todoapp')
-        .should('not.contain', 'Learn Cypress Command API')
+        .should('not.contain', 'Learn Cypress composition')
     })
 
     it('should allow chaining of all the helpers', () => {
